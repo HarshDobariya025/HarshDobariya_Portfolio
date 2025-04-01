@@ -9,14 +9,14 @@ interface SectionTitleProps {
 
 export default function SectionTitle({ title, subtitle, className }: SectionTitleProps) {
   return (
-    <div className={cn("text-center mb-12", className)}>
-      <h2 className="text-3xl md:text-4xl font-bold font-heading mb-2">{title}</h2>
+    <div className={cn("text-center mb-3 sm:mb-5 md:mb-6 lg:mb-8", className)}>
+      <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
+      <div className="mt-2 mb-2 flex justify-center">
+        <div className="h-1 w-[135px] bg-primary rounded-full"></div>
+      </div>
       {subtitle && (
         <p className="text-muted-foreground max-w-xl mx-auto">{subtitle}</p>
       )}
-      <div className="mt-3 flex justify-center">
-        <div className="h-1 w-20 bg-primary rounded-full"></div>
-      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 import SectionTitle from "@/components/SectionTitle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect } from "react";
@@ -41,35 +40,37 @@ export default function SkillsSection() {
     "Node.js",
     "Express",
     "MongoDB",
-    "Firebase",
+    "Postgres",
     "REST APIs",
-    "GraphQL",
     "SQL",
     "Python",
     "Java",
+    // "Firebase",
+    // "GraphQL",
   ];
 
   const toolsSkills = [
     "Git",
     "GitHub",
     "VS Code",
+    "Vercel",
+    "Netify",
     "Figma",
     "Webpack",
-    "Jest",
-    "Docker",
-    "AWS",
-    "Vercel",
+    // "Jest",
+    // "Docker",
+    // "AWS",
   ];
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-10 sm:py-14 md:py-16 lg:py-20">
       <div className="container px-4 mx-auto">
         <SectionTitle
           title="Skills & Expertise"
           subtitle="Technologies and tools I work with"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
           <SkillCategory 
             title="Frontend" 
             skills={frontendSkills} 
@@ -100,15 +101,15 @@ interface SkillCategoryProps {
 function SkillCategory({ title, skills, badgeColor }: SkillCategoryProps) {
   return (
     <Card className="fade-in-up">
-      <CardHeader>
-        <CardTitle className="text-center">{title}</CardTitle>
+      <CardHeader className="py-3 sm:py-4 md:py-5 px-4 sm:px-5 md:px-6">
+        <CardTitle className="text-center text-base sm:text-lg md:text-xl">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-2 justify-center">
+      <CardContent className="px-3 sm:px-4 md:px-5 pb-4 sm:pb-5 md:pb-6">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-2.5 justify-center">
           {skills.map((skill, index) => (
             <span
               key={skill}
-              className={`skill-badge ${badgeColor}`}
+              className={`skill-badge ${badgeColor} text-xs sm:text-sm rounded-full px-2 py-1 sm:px-3 sm:py-1.5 font-medium`}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               {skill}

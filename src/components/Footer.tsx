@@ -17,7 +17,7 @@ export default function Footer() {
 
           <div className="flex gap-4">
             <a
-              href="https://github.com/harshdobariya"
+              href="https://github.com/HarshDobariya025"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -26,7 +26,7 @@ export default function Footer() {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com/in/harshdobariya"
+              href="https://www.linkedin.com/in/harsh-dobariya-0b72062ba"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -35,14 +35,14 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="mailto:harsh.dobariya@example.com"
+              href="mailto:dobariyaharsh93@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
             >
               <Mail className="h-5 w-5" />
             </a>
             <a
-              href="tel:+1234567890"
+              href="tel:+919426638153"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Phone"
             >

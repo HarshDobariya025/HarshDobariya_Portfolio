@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
@@ -97,19 +96,33 @@ export default function ProjectsSection() {
     },
   ];
 
-  const displayedProjects = showAllProjects
-    ? projects
-    : projects.filter((project) => project.featured);
+  // This should reliably filter the projects
+  const featuredProjects = projects.filter(project => project.featured);
+  const displayedProjects = showAllProjects ? projects : featuredProjects;
+
+  const toggleProjects = () => {
+    setShowAllProjects(!showAllProjects);
+    // Force a re-render to ensure the projects update
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 10);
+  };
+
+  // Log to help debug
+  console.log("Showing all projects:", showAllProjects);
+  console.log("Total projects:", projects.length);
+  console.log("Featured projects:", featuredProjects.length);
+  console.log("Displayed projects:", displayedProjects.length);
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
+    <section id="projects" className="py-10 sm:py-14 md:py-16 lg:py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
         <SectionTitle
           title="My Projects"
           subtitle="Check out some of my recent work"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
           {displayedProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -119,17 +132,15 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {!showAllProjects && (
-          <div className="text-center mt-12">
-            <Button
-              onClick={() => setShowAllProjects(true)}
-              variant="outline"
-              className="rounded-full px-6"
-            >
-              Show More Projects
-            </Button>
-          </div>
-        )}
+        <div className="text-center mt-8 sm:mt-10 md:mt-12">
+          <Button
+            onClick={toggleProjects}
+            variant="outline"
+            className="rounded-full px-4 sm:px-6 text-sm sm:text-base"
+          >
+            {showAllProjects ? "View Less" : "Show More Projects"}
+          </Button>
+        </div>
       </div>
     </section>
   );
@@ -152,50 +163,50 @@ interface ProjectCardProps {
 function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <Card
-      className="project-card fade-in-up overflow-hidden"
+      className="project-card fade-in-up overflow-hidden h-full flex flex-col"
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
         />
       </div>
-      <CardHeader className="pb-2">
-        <h3 className="text-xl font-bold">{project.title}</h3>
+      <CardHeader className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
+        <h3 className="text-lg sm:text-xl font-bold line-clamp-1">{project.title}</h3>
       </CardHeader>
-      <CardContent className="pb-2">
-        <p className="text-muted-foreground mb-4">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+      <CardContent className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 flex-grow">
+        <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">{project.description}</p>
+        <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
+              className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
             >
               {tech}
             </span>
           ))}
         </div>
       </CardContent>
-      <CardFooter>
-        <div className="flex gap-4 w-full">
-          <Button asChild size="sm" className="flex-1">
+      <CardFooter className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
+        <div className="flex gap-2 sm:gap-4 w-full">
+          <Button asChild size="sm" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
             <a
               href={project.liveDemo}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ExternalLink className="mr-1 h-4 w-4" /> Live Demo
+              <ExternalLink className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Live Demo
             </a>
           </Button>
-          <Button asChild size="sm" variant="outline" className="flex-1">
+          <Button asChild size="sm" variant="outline" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github className="mr-1 h-4 w-4" /> Code
+              <Github className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Code
             </a>
           </Button>
         </div>
