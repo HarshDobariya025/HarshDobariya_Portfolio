@@ -25,7 +25,7 @@ export default function ProjectsSection() {
     return () => {
       elements.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [showAllProjects]); // Added showAllProjects as dependency to re-run when it changes
 
   const projects = [
     {
@@ -33,32 +33,32 @@ export default function ProjectsSection() {
       title: "E-Commerce Platform",
       description:
         "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["React", "Node.js", "MongoDB", "Express", "Redux"],
-      liveDemo: "https://project1.com",
-      github: "https://github.com/harshdobariya/project1",
+      image: "src/components/sections/images/Ecommerce.png",
+      techStack: ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"],
+      liveDemo: "https://cloth-frontend-eta.vercel.app/",
+      github: "https://github.com/HarshDobariya025/Cloth-Full-Stack.git",
       featured: true,
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "AI-Student Assistent",
       description:
-        "A productivity application for managing tasks, projects, and team collaboration with real-time updates.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["Next.js", "Firebase", "Tailwind CSS", "React Query"],
-      liveDemo: "https://project2.com",
-      github: "https://github.com/harshdobariya/project2",
+        "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
+      image: "src/components/sections/images/StudyMate.png",
+      techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
+      liveDemo: "https://ai-student-assistant-six.vercel.app/",
+      github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
       featured: true,
     },
     {
       id: 3,
-      title: "Travel Blog",
+      title: "Gemini Clone",
       description:
         "A personal travel blog featuring dynamic content, photo galleries, and interactive maps of visited locations.",
-      image: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["React", "GraphQL", "Contentful", "Netlify"],
-      liveDemo: "https://project3.com",
-      github: "https://github.com/harshdobariya/project3",
+      image: "src/components/sections/images/Gemini.png",
+      techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
+      liveDemo: "https://gemini-clone-ten-lovat.vercel.app/",
+      github: "https://github.com/HarshDobariya025/Gemini_clone.git",
       featured: true,
     },
     {
@@ -66,53 +66,21 @@ export default function ProjectsSection() {
       title: "Weather Dashboard",
       description:
         "Real-time weather information with forecasts, animated visualizations, and location-based data.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["React", "OpenWeatherAPI", "Chart.js", "CSS Modules"],
-      liveDemo: "https://project4.com",
-      github: "https://github.com/harshdobariya/project4",
-      featured: false,
-    },
-    {
-      id: 5,
-      title: "Recipe Finder",
-      description:
-        "Search and discover recipes based on available ingredients, dietary preferences, and meal types.",
-      image: "https://images.unsplash.com/photo-1556911220-bda9f7f7597e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["JavaScript", "Spoonacular API", "HTML", "CSS"],
-      liveDemo: "https://project5.com",
-      github: "https://github.com/harshdobariya/project5",
-      featured: false,
-    },
-    {
-      id: 6,
-      title: "Portfolio Website",
-      description:
-        "A dynamic portfolio website showcasing my projects, skills, and experience with a sleek, modern design.",
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      techStack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-      liveDemo: "https://project6.com",
-      github: "https://github.com/harshdobariya/project6",
+      image: "src/components/sections/images/Weather.png",
+      techStack: ["HTML", "CSS", "Javascript"],
+      liveDemo: "https://weather-web-app-five-pi.vercel.app/",
+      github: "https://github.com/HarshDobariya025/Weather_Web_App.git",
       featured: false,
     },
   ];
 
-  // This should reliably filter the projects
+  // Filter projects based on the current state
   const featuredProjects = projects.filter(project => project.featured);
   const displayedProjects = showAllProjects ? projects : featuredProjects;
 
   const toggleProjects = () => {
-    setShowAllProjects(!showAllProjects);
-    // Force a re-render to ensure the projects update
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 10);
+    setShowAllProjects(prevState => !prevState);
   };
-
-  // Log to help debug
-  console.log("Showing all projects:", showAllProjects);
-  console.log("Total projects:", projects.length);
-  console.log("Featured projects:", featuredProjects.length);
-  console.log("Displayed projects:", displayedProjects.length);
 
   return (
     <section id="projects" className="py-10 sm:py-14 md:py-16 lg:py-20 bg-muted/30">
@@ -191,7 +159,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       </CardContent>
       <CardFooter className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
         <div className="flex gap-2 sm:gap-4 w-full">
-          <Button asChild size="sm" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
+          <Button asChild size="sm" variant="outline" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
             <a
               href={project.liveDemo}
               target="_blank"

@@ -37,7 +37,7 @@ export default function HomeSection() {
           <div className="w-full lg:w-1/3 flex justify-center lg:justify-end relative mb-6 lg:mb-0">
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-primary/50">
               <img
-                src="src/components/sections/harsh-2.jpg"
+                src="src/components/sections/images/harsh-2.jpg"
                 alt="Harsh Dobariya"
                 className="object-cover w-full h-full"
               />
