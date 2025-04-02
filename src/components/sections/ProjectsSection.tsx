@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
+import { assets } from '../../assets/assets';
 
 export default function ProjectsSection() {
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -33,7 +34,7 @@ export default function ProjectsSection() {
       title: "E-Commerce Platform",
       description:
         "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
-      image: "src/components/sections/images/Ecommerce.png",
+      image: assets.Ecommerce,
       techStack: ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"],
       liveDemo: "https://cloth-frontend-eta.vercel.app/",
       github: "https://github.com/HarshDobariya025/Cloth-Full-Stack.git",
@@ -44,7 +45,7 @@ export default function ProjectsSection() {
       title: "AI-Student Assistent",
       description:
         "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
-      image: "src/components/sections/images/StudyMate.png",
+      image: assets.StudyMate,
       techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
       liveDemo: "https://ai-student-assistant-six.vercel.app/",
       github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
@@ -55,7 +56,7 @@ export default function ProjectsSection() {
       title: "Gemini Clone",
       description:
         "A personal travel blog featuring dynamic content, photo galleries, and interactive maps of visited locations.",
-      image: "src/components/sections/images/Gemini.png",
+      image: assets.Gemini,
       techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
       liveDemo: "https://gemini-clone-ten-lovat.vercel.app/",
       github: "https://github.com/HarshDobariya025/Gemini_clone.git",
@@ -66,7 +67,7 @@ export default function ProjectsSection() {
       title: "Weather Dashboard",
       description:
         "Real-time weather information with forecasts, animated visualizations, and location-based data.",
-      image: "src/components/sections/images/Weather.png",
+      image: assets.Weather,
       techStack: ["HTML", "CSS", "Javascript"],
       liveDemo: "https://weather-web-app-five-pi.vercel.app/",
       github: "https://github.com/HarshDobariya025/Weather_Web_App.git",
@@ -106,7 +107,15 @@ export default function ProjectsSection() {
             variant="outline"
             className="rounded-full px-4 sm:px-6 text-sm sm:text-base"
           >
-            {showAllProjects ? "View Less" : "Show More Projects"}
+            {showAllProjects ? (
+              <>
+                View Less <ChevronUp className="ml-1 h-4 w-4" />
+              </>
+            ) : (
+              <>
+                Show More Projects <ChevronDown className="ml-1 h-4 w-4" />
+              </>
+            )}
           </Button>
         </div>
       </div>

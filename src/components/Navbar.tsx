@@ -40,7 +40,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 mb-2 px-1 sm:px-8 lg:px-12",
-        scrolled ? "bg-background/70 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled ? "bg-background/65 backdrop-blur-md shadow-lg" : "bg-transparent"
       )}
     >
       <div className="container px-2 sm:mx-4 lg:mx-auto flex justify-between items-center h-16">
