@@ -27,39 +27,35 @@ export default function SkillsSection() {
     "HTML",
     "CSS",
     "JavaScript",
-    "TypeScript",
     "React",
     "Next.js",
     "Tailwind CSS",
-    "Redux",
     "Framer Motion",
     "Bootstrap",
+    "Material UI",
+    // "Redux",
+    // "TypeScript",
   ];
 
   const backendSkills = [
     "Node.js",
     "Express",
     "MongoDB",
-    "Postgres",
+    "Mongoose",
+    // "Postgres",
+    "MySQL",
     "REST APIs",
-    "SQL",
-    "Python",
-    "Java",
+    // "Python",
+    // "Java",
     // "Firebase",
     // "GraphQL",
   ];
 
-  const toolsSkills = [
-    "Git",
-    "GitHub",
-    "VS Code",
-    "Vercel",
-    "Netify",
-    "Figma",
-    "Webpack",
-    // "Jest",
-    // "Docker",
-    // "AWS",
+  const languagesSkills = [
+    "C",
+    "C++",
+    "Java",
+    "Python",
   ];
 
   return (
@@ -82,8 +78,8 @@ export default function SkillsSection() {
             badgeColor="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
           />
           <SkillCategory 
-            title="Tools & Others" 
-            skills={toolsSkills} 
+            title="Programming Languages" 
+            skills={languagesSkills} 
             badgeColor="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
           />
         </div>

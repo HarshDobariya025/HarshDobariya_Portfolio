@@ -36,12 +36,21 @@ export default function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate form submission
+    // Format the email body with the form data
+    const emailBody = `
+      Name: ${formData.name}
+      Email: ${formData.email}
+      Message: ${formData.message}
+    `;
+    // Create a mailto link with the recipient, subject, and body
+    const mailtoLink = `mailto:dobariyaharsh93@gmail.com?subject=Feedback Form Submission&body=${encodeURIComponent(emailBody)}`;
+    // Open the user's default email client with the pre-filled email
+    window.location.href = mailtoLink;
+    // Show success message
     setTimeout(() => {
       toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        title: "Email client opened!",
+        description: "Complete the email send process in your email application.",
       });
       setFormData({
         name: "",

@@ -48,27 +48,27 @@ export default function AboutSection() {
         </div>
 
         {/* Responsive Cards Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-6xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-6xl">
           <InfoCard
             icon={<GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Education"
             description="B.Tech in Computer Science Engineering"
           />
-          <InfoCard
-            icon={<Briefcase className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Experience"
-            description="2+ Years of Development"
-          />
-          <InfoCard
-            icon={<MapPin className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Home"
-            description="Surat, Gujarat"
-          />
+            <InfoCard
+              icon={<MapPin className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
+              title="Home"
+              description="Surat, Gujarat"
+            />
           <InfoCard
             icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Achievements"
-            description="10+ Successful Projects"
+            description="5+ Successful Projects"
           />
+          {/* <InfoCard
+            icon={<Briefcase className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
+            title="Experience"
+            description="2+ Years of Development"
+          /> */}
         </div>
       </div>
     </section>

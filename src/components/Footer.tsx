@@ -10,20 +10,18 @@ export default function Footer() {
             <h2 className="text-lg font-bold">
               <span className="text-primary">Harsh</span> Dobariya
             </h2>
-            <p className="text-sm text-muted-foreground">
+            {/* <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} All Rights Reserved
-            </p>
+            </p> */}
           </div>
 
           <div className="flex gap-4">
             <a
-              href="https://github.com/HarshDobariya025"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:dobariyaharsh93@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="GitHub"
+              aria-label="Email"
             >
-              <Github className="h-5 w-5" />
+              <Mail className="h-5 w-5" />
             </a>
             <a
               href="https://www.linkedin.com/in/harsh-dobariya-0b72062ba"
@@ -35,11 +33,13 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="mailto:dobariyaharsh93@gmail.com"
+              href="https://github.com/HarshDobariya025"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Email"
+              aria-label="GitHub"
             >
-              <Mail className="h-5 w-5" />
+              <Github className="h-5 w-5" />
             </a>
             <a
               href="tel:+919426638153"
