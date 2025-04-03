@@ -70,7 +70,7 @@ export default function AboutSection() {
         <motion.div variants={fadeInUp}>
           <SectionTitle
             title="About Me"
-            subtitle="Get to know more about me and my background"
+            subtitle="Get to know more about me"
           />
         </motion.div>
 
@@ -92,8 +92,7 @@ export default function AboutSection() {
             variants={itemVariants}
           >
             I am passionate about problem-solving, optimizing performance, and writing clean, maintainable 
-            code. Beyond coding, I enjoy exploring new technologies, contributing to open-source projects, and 
-            mentoring fellow developers. I strive to build innovative solutions that make an impact in the 
+            code. Beyond coding, I enjoy exploring new technologies and contributing to open-source projects. I strive to build innovative solutions that make an impact in the 
             tech world.
           </motion.p>
         </motion.div>
@@ -107,7 +106,7 @@ export default function AboutSection() {
             custom={0}
             icon={<GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Education"
-            description="B.Tech in Computer Science Engineering"
+            description="B.Tech in Information Technology"
             cardVariants={cardVariants}
           />
           <MotionInfoCard
@@ -121,7 +120,7 @@ export default function AboutSection() {
             custom={2}
             icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Achievements"
-            description="5+ Projects"
+            description="4+ Projects"
             cardVariants={cardVariants}
           />
         </motion.div>

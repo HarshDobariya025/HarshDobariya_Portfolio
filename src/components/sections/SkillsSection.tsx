@@ -19,7 +19,6 @@ export default function SkillsSection() {
     "Node.js",
     "Express",
     "MongoDB",
-    "Mongoose",
     "MySQL",
     "REST APIs",
   ];

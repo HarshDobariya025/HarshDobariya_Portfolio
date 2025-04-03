@@ -27,7 +27,7 @@ export default function ProjectsSection() {
       description:
         "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
       image: assets.StudyMate,
-      techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
+      techStack: ["React" ,"Node.js", "Express", "Redux","Gemini API","Tailwind"],
       liveDemo: "https://ai-student-assistant-six.vercel.app/",
       github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
       featured: true,
@@ -36,9 +36,9 @@ export default function ProjectsSection() {
       id: 3,
       title: "Gemini Clone",
       description:
-        "A personal travel blog featuring dynamic content, photo galleries, and interactive maps of visited locations.",
+        "Gemini Clone is an AI-powered chatbot that allows users to ask anything, just like Gemini AI. It features a sidebar for new chats and recent conversations.",
       image: assets.Gemini,
-      techStack: ["React","Gemini API" ,"Node.js", "Express", "Redux","Tailwind"],
+      techStack: ["React","Gemini API","Tailwind CSS"],
       liveDemo: "https://gemini-clone-ten-lovat.vercel.app/",
       github: "https://github.com/HarshDobariya025/Gemini_clone.git",
       featured: true,

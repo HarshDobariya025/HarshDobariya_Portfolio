@@ -132,7 +132,7 @@ export default function ContactSection() {
         >
           <SectionTitle
             title="Get In Touch"
-            subtitle="Have a project in mind or just want to say hello?"
+            subtitle="Connect with me"
           />
         </motion.div>
 
@@ -206,8 +206,7 @@ export default function ContactSection() {
                 <motion.div variants={itemVariants}>
                   <h3 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base">Currently Available</h3>
                   <p className="text-muted-foreground text-sm sm:text-base">
-                    I'm currently available for freelance work or full-time
-                    positions. Let's discuss your project requirements.
+                    I'm currently available for freelance work. Let's discuss your project requirements.
                   </p>
                 </motion.div>
               </CardContent>

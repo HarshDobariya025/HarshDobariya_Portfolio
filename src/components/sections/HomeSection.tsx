@@ -83,9 +83,6 @@ export default function HomeSection() {
                 className="object-cover w-full h-full"
               />
             </motion.div>
-            <div 
-              className="absolute -z-10 top-4 -right-4 lg:w-80 lg:h-80 border-4 border-primary/30 rounded-full"
-            ></div>
           </motion.div>
           
           {/* Content */}
@@ -106,7 +103,7 @@ export default function HomeSection() {
               className="text-xl sm:text-2xl md:text-3xl font-semibold opacity-80 mb-3 sm:mb-4 md:mb-6"
               variants={itemVariants}
             >
-              Software Developer
+              Web Developer
             </motion.h2>
             <motion.p 
               className="text-base sm:text-lg mb-4 sm:mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0 px-2 sm:px-0"

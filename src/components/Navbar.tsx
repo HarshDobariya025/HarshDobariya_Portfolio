@@ -10,6 +10,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+  // Set default light theme when component mounts
+  useEffect(() => {
+    // Check if theme is already set in localStorage
+    const storedTheme = localStorage.getItem("theme");
+    if (!storedTheme) {
+      // If no theme is set, set it to light
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -28,6 +39,19 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Handle scroll lock for mobile menu
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -51,19 +75,17 @@ export default function Navbar() {
 
   const mobileMenuVariants = {
     closed: { 
-      height: 0,
       opacity: 0,
+      y: -10,
       transition: { 
-        duration: 0.3,
-        opacity: { duration: 0.2 }
+        duration: 0.2,
       }
     },
     open: { 
-      height: "auto",
       opacity: 1,
+      y: 0,
       transition: { 
-        duration: 0.3,
-        opacity: { duration: 0.2, delay: 0.1 }
+        duration: 0.2,
       }
     }
   };
@@ -184,19 +206,21 @@ export default function Navbar() {
             </Button>
           </motion.div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              className="fixed inset-x-0 top-16 bg-background/90 backdrop-blur-md shadow-md overflow-hidden"
-              variants={mobileMenuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-            >
+      {/* Mobile Menu - Fixed positioning outside the container */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-x-0 top-16 bg-background/95 backdrop-blur-md shadow-md md:hidden h-screen"
+            variants={mobileMenuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
+            <div className="container mx-auto px-4">
               <motion.div 
-                className="flex flex-col items-center py-4 space-y-4"
+                className="flex flex-col items-center py-8 space-y-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.1 }}
@@ -208,38 +232,42 @@ export default function Navbar() {
                   "projects",
                   "contact",
                 ].map((item, index) => (
-                  <motion.button
+                  <motion.div 
                     key={item}
-                    onClick={() => scrollToSection(item)}
-                    className={cn(
-                      "text-lg font-medium text-foreground relative transition-all",
-                      activeSection === item ? "text-primary" : ""
-                    )}
+                    className="inline-block"
                     variants={menuItemVariants}
                     custom={index}
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
                   >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                    <motion.div
-                      className="absolute left-0 bottom-[-2px] h-[2px] bg-primary"
-                      initial={{ width: 0, left: "50%" }}
-                      animate={{
-                        width: activeSection === item ? "100%" : "0%",
-                        left: activeSection === item ? "0%" : "50%"
-                      }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.button>
+                    <motion.button
+                      onClick={() => scrollToSection(item)}
+                      className={cn(
+                        "text-xl font-medium text-foreground relative transition-all inline-block py-2",
+                        activeSection === item ? "text-primary" : ""
+                      )}
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                      <motion.div
+                        className="absolute left-0 bottom-[-2px] h-[2px] bg-primary"
+                        initial={{ width: 0, left: "50%" }}
+                        animate={{
+                          width: activeSection === item ? "100%" : "0%",
+                          left: activeSection === item ? "0%" : "50%"
+                        }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.button>
+                  </motion.div>
                 ))}
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
