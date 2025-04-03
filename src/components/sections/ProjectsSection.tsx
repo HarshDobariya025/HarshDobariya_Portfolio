@@ -1,32 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react";
 import { assets } from '../../assets/assets';
+import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
   const [showAllProjects, setShowAllProjects] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll(".fade-in-up");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, [showAllProjects]); // Added showAllProjects as dependency to re-run when it changes
 
   const projects = [
     {
@@ -83,41 +64,113 @@ export default function ProjectsSection() {
     setShowAllProjects(prevState => !prevState);
   };
 
+  // Animation variants
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        delay: 0.3,
+        duration: 0.5
+      }
+    },
+    hover: { 
+      scale: 1.05,
+      transition: { 
+        duration: 0.2 
+      }
+    },
+    tap: { 
+      scale: 0.95 
+    }
+  };
+
   return (
     <section id="projects" className="py-10 sm:py-14 md:py-16 lg:py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
-        <SectionTitle
-          title="My Projects"
-          subtitle="Check out some of my recent work"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
+            <SectionTitle
+              title="My Projects"
+              subtitle="Check out some of my recent work"
+            />
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10">
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8 md:mt-10"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          key={showAllProjects ? "all" : "featured"} // Force re-render animation when toggle changes
+        >
           {displayedProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
+              variants={cardVariants}
             />
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center mt-8 sm:mt-10 md:mt-12">
-          <Button
-            onClick={toggleProjects}
-            variant="outline"
-            className="rounded-full px-4 sm:px-6 text-sm sm:text-base"
+        <motion.div 
+          className="text-center mt-8 sm:mt-10 md:mt-12"
+          variants={buttonVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div
+            whileHover="hover"
+            whileTap="tap"
           >
-            {showAllProjects ? (
-              <>
-                View Less <ChevronUp className="ml-1 h-4 w-4" />
-              </>
-            ) : (
-              <>
-                Show More Projects <ChevronDown className="ml-1 h-4 w-4" />
-              </>
-            )}
-          </Button>
-        </div>
+            <Button
+              onClick={toggleProjects}
+              variant="outline"
+              className="rounded-full px-4 sm:px-6 text-sm sm:text-base"
+            >
+              {showAllProjects ? (
+                <>
+                  View Less <ChevronUp className="ml-1 h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Show More Projects <ChevronDown className="ml-1 h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
@@ -135,59 +188,148 @@ interface ProjectCardProps {
     featured: boolean;
   };
   index: number;
+  variants: any;
 }
 
-function ProjectCard({ project, index }: ProjectCardProps) {
+function ProjectCard({ project, index, variants }: ProjectCardProps) {
+  // Animation for tech stack tags
+  const techStackVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        delay: 0.2 + (index * 0.1)
+      }
+    }
+  };
+
+  // Animation for image hover
+  const imageVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.1, transition: { duration: 0.4 } }
+  };
+
+  // Animation for buttons
+  const buttonHoverVariants = {
+    rest: { scale: 1 },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
+    tap: { scale: 0.95 }
+  };
+
   return (
-    <Card
-      className="project-card fade-in-up overflow-hidden h-full flex flex-col"
-      style={{ transitionDelay: `${index * 100}ms` }}
+    <motion.div
+      variants={variants}
+      custom={index}
+      className="h-full"
     >
-      <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-        />
-      </div>
-      <CardHeader className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
-        <h3 className="text-lg sm:text-xl font-bold line-clamp-1">{project.title}</h3>
-      </CardHeader>
-      <CardContent className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 flex-grow">
-        <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">{project.description}</p>
-        <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
-          {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
+      <Card className="project-card overflow-hidden h-full flex flex-col">
+        <motion.div 
+          className="relative h-36 sm:h-40 md:h-48 overflow-hidden"
+          initial="rest"
+          whileHover="hover"
+          animate="rest"
+        >
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            variants={imageVariants}
+          />
+        </motion.div>
+        
+        <CardHeader className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
+          <motion.h3 
+            className="text-lg sm:text-xl font-bold line-clamp-1"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + (index * 0.05) }}
+          >
+            {project.title}
+          </motion.h3>
+        </CardHeader>
+        
+        <CardContent className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 flex-grow">
+          <motion.p 
+            className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 + (index * 0.05) }}
+          >
+            {project.description}
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.05
+                }
+              }
+            }}
+          >
+            {project.techStack.map((tech) => (
+              <motion.span
+                key={tech}
+                className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
+                variants={techStackVariants}
+                whileHover={{ scale: 1.1 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </motion.div>
+        </CardContent>
+        
+        <CardFooter className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
+          <motion.div 
+            className="flex gap-2 sm:gap-4 w-full"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 + (index * 0.05) }}
+          >
+            <motion.div
+              className="flex-1"
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonHoverVariants}
             >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
-        <div className="flex gap-2 sm:gap-4 w-full">
-          <Button asChild size="sm" variant="outline" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
-            <a
-              href={project.liveDemo}
-              target="_blank"
-              rel="noopener noreferrer"
+              <Button asChild size="sm" variant="outline" className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+                <a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Live Demo
+                </a>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              className="flex-1"
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonHoverVariants}
             >
-              <ExternalLink className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Live Demo
-            </a>
-          </Button>
-          <Button asChild size="sm" variant="outline" className="flex-1 h-8 sm:h-9 text-xs sm:text-sm">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Code
-            </a>
-          </Button>
-        </div>
-      </CardFooter>
-    </Card>
+              <Button asChild size="sm" variant="outline" className="w-full h-8 sm:h-9 text-xs sm:text-sm">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Code
+                </a>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </CardFooter>
+      </Card>
+    </motion.div>
   );
 }
