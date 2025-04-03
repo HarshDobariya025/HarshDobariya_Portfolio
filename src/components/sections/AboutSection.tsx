@@ -121,7 +121,7 @@ export default function AboutSection() {
             custom={2}
             icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Achievements"
-            description="5+ Successful Projects"
+            description="5+ Projects"
             cardVariants={cardVariants}
           />
         </motion.div>
