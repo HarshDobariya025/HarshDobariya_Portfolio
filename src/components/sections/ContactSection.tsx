@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Instagram, Linkedin, Mail, Phone, SendIcon } from "lucide-react";
+import { Download, Github, Instagram, Linkedin, Mail, Phone, SendIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
@@ -311,6 +311,15 @@ export default function ContactSection() {
             </Card>
           </motion.div>
         </motion.div>
+      </div>
+
+      <div className="justify-center flex gap-4 mt-8 sm:mt-10 md:mt-18 lg:mt-12">
+        <Button asChild variant="secondary" className="rounded-full px-6">
+          <a href="/HarshDobariya-Resume.pdf" download="Harsh_Dobariya_Resume.pdf">
+            <Download className="mr-2 h-4 w-4" />
+            Resume
+          </a>
+        </Button>
       </div>
     </section>
   );

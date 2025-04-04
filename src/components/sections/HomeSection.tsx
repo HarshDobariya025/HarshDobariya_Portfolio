@@ -141,7 +141,7 @@ export default function HomeSection() {
               </Button>
               <Button asChild variant="outline" className="rounded-full px-4 sm:px-5 md:px-6 text-sm sm:text-base">
                 <motion.a 
-                  href="https://drive.google.com/file/d/1aml2zYt9m7WtXngrb48JsaKrThNSoQ8p/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/1PunJeCLQz9DI_A0XtHrT7_oyEtx2KpLX/view?usp=sharing" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
