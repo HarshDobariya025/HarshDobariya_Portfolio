@@ -314,7 +314,7 @@ export default function ContactSection() {
       </div>
 
       <div className="justify-center flex gap-4 mt-8 sm:mt-10 md:mt-18 lg:mt-12">
-        <Button asChild variant="secondary" className="rounded-full px-6">
+        <Button asChild variant="outline" className="rounded-full px-6">
           <a href="/HarshDobariya-Resume.pdf" download="Harsh_Dobariya_Resume.pdf">
             <Download className="mr-2 h-4 w-4" />
             Resume

@@ -45,6 +45,17 @@ export default function ProjectsSection() {
     },
     {
       id: 4,
+      title: "QR-Code Generator",
+      description:
+      "A versatile QR Code Generator and Scanner that supports creating QR codes for URLs, emails, phone numbers, Wi-Fi, locations, events, and plain text. Includes a built-in QR scanner for seamless decoding.",
+      image: assets.QRGenerator,
+      techStack: ["React", "QRCode.js", "Tailwind"],
+      liveDemo: "https://qr-code-generator-snowy.vercel.app/",
+      github: "https://github.com/HarshDobariya025/QR-Code-generator.git",
+      featured: false,
+    },
+    {
+      id: 5,
       title: "Weather Dashboard",
       description:
         "Real-time weather information with forecasts, animated visualizations, and location-based data.",
