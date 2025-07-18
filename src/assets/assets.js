@@ -4,8 +4,8 @@ import StudyMate from './StudyMate.png'
 import Gemini from './Gemini.png'
 import QRGenerator from './QRGenerator.png'    
 import Weather from './Weather.png'
-
+import AICareerNexus from './AICareerNexus.png'
 
 export const assets = {
-    Harsh, Ecommerce, StudyMate, Gemini,QRGenerator, Weather
+    Harsh, Ecommerce, StudyMate, Gemini, QRGenerator, Weather, AICareerNexus
 }

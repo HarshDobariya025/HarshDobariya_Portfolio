@@ -12,6 +12,28 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
+      title: "AI Career Nexus",
+      description:
+        "AI Career Coach is a full-stack platform offering personalized industry insights, resume builder, MCQ practice, and AI-generated cover letters based on user skills and experience.",
+      image: assets.AICareerNexus,
+      techStack: ["NextJS", "Node.js", "Postgres", "Gemini API", "ShadcnUI", "Tailwind"],
+      liveDemo: "https://ai-career-coach-v2-xi.vercel.app/",
+      github: "https://github.com/HarshDobariya025/AI-Career-Coach.git",
+      featured: true,
+    },
+    {
+      id: 2,
+      title: "AI-Student Assistent",
+      description:
+      "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
+      image: assets.StudyMate,
+      techStack: ["React" ,"Node.js", "Express", "Redux","Gemini API","Tailwind"],
+      liveDemo: "https://ai-student-assistant-six.vercel.app/",
+      github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
+      featured: true,
+    },
+    {
+      id: 3,
       title: "E-Commerce Platform",
       description:
         "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
@@ -22,18 +44,7 @@ export default function ProjectsSection() {
       featured: true,
     },
     {
-      id: 2,
-      title: "AI-Student Assistent",
-      description:
-        "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
-      image: assets.StudyMate,
-      techStack: ["React" ,"Node.js", "Express", "Redux","Gemini API","Tailwind"],
-      liveDemo: "https://ai-student-assistant-six.vercel.app/",
-      github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
-      featured: true,
-    },
-    {
-      id: 3,
+      id: 4,
       title: "Gemini Clone",
       description:
         "Gemini Clone is an AI-powered chatbot that allows users to ask anything, just like Gemini AI. It features a sidebar for new chats and recent conversations.",
@@ -41,10 +52,10 @@ export default function ProjectsSection() {
       techStack: ["React","Gemini API","Tailwind CSS"],
       liveDemo: "https://gemini-clone-ten-lovat.vercel.app/",
       github: "https://github.com/HarshDobariya025/Gemini_clone.git",
-      featured: true,
+      featured: false,
     },
     {
-      id: 4,
+      id: 5,
       title: "QR-Code Generator",
       description:
       "A versatile QR Code Generator and Scanner that supports creating QR codes for URLs, emails, phone numbers, Wi-Fi, locations, events, and plain text. Includes a built-in QR scanner for seamless decoding.",
@@ -55,7 +66,7 @@ export default function ProjectsSection() {
       featured: false,
     },
     {
-      id: 5,
+      id: 6,
       title: "Weather Dashboard",
       description:
         "Real-time weather information with forecasts, animated visualizations, and location-based data.",
@@ -65,6 +76,7 @@ export default function ProjectsSection() {
       github: "https://github.com/HarshDobariya025/Weather_Web_App.git",
       featured: false,
     },
+
   ];
 
   // Filter projects based on the current state
