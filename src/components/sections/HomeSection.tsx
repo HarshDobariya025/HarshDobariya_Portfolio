@@ -93,24 +93,28 @@ export default function HomeSection() {
             >
               Hello, I'm
             </motion.p>
+
             <motion.h1 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-3 md:mb-4"
               variants={itemVariants}
             >
               Harsh Dobariya
             </motion.h1>
+
             <motion.h2 
               className="text-xl sm:text-2xl md:text-3xl font-semibold opacity-80 mb-3 sm:mb-4 md:mb-6"
               variants={itemVariants}
             >
-              Web Developer
+              Full-Stack Developer
             </motion.h2>
+
             <motion.p 
               className="text-base sm:text-lg mb-4 sm:mb-6 md:mb-8 max-w-xl mx-auto lg:mx-0 px-2 sm:px-0"
               variants={itemVariants}
             >
-              As a passionate student and full-stack developer, I specialize in building dynamic and responsive web applications. With expertise in both front-end and back-end technologies.
+              I’m a passionate full-stack developer specializing in MERN stack development and cloud-based applications. I build scalable, high-performance web solutions with modern front-end experiences, robust back-end systems, and cloud-ready architectures.
             </motion.p>
+
             <motion.div 
               className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start"
               variants={itemVariants}
@@ -141,7 +145,7 @@ export default function HomeSection() {
               </Button>
               <Button asChild variant="outline" className="rounded-full px-4 sm:px-5 md:px-6 text-sm sm:text-base">
                 <motion.a 
-                  href="https://drive.google.com/file/d/1PunJeCLQz9DI_A0XtHrT7_oyEtx2KpLX/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/14bKm6B0fRoF2QV2wV4nWky1I11ZaN81j/view?usp=sharing" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

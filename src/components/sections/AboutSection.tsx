@@ -103,6 +103,13 @@ export default function AboutSection() {
           variants={containerVariants}
         >
           <MotionInfoCard
+            custom={2}
+            icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
+            title="Achievements"
+            description="4+ Projects, 1x AWS Certified"
+            cardVariants={cardVariants}
+          />
+          <MotionInfoCard
             custom={0}
             icon={<GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Education"
@@ -114,13 +121,6 @@ export default function AboutSection() {
             icon={<MapPin className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
             title="Home"
             description="Surat, Gujarat"
-            cardVariants={cardVariants}
-          />
-          <MotionInfoCard
-            custom={2}
-            icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Achievements"
-            description="4+ Projects"
             cardVariants={cardVariants}
           />
         </motion.div>

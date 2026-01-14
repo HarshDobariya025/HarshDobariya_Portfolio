@@ -12,17 +12,39 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: "AI Career Nexus",
+      title: "AI Career Guidance Syatem",
       description:
         "AI Career Coach is a full-stack platform offering personalized industry insights, resume builder, MCQ practice, and AI-generated cover letters based on user skills and experience.",
       image: assets.AICareerNexus,
-      techStack: ["NextJS", "Node.js", "Postgres", "Gemini API", "ShadcnUI", "Tailwind"],
+      techStack: ["NextJS", "AWS", "Ingest", "Node.js", "Neon PostgresSQL", "Gemini API", "Clerk", "ShadcnUI", "Tailwind"],
       liveDemo: "https://ai-career-coach-v2-xi.vercel.app/",
       github: "https://github.com/HarshDobariya025/AI-Career-Coach.git",
       featured: true,
     },
     {
       id: 2,
+      title: "Spott - Event Organiser",
+      description:
+        "Developed an event organizer platform that lets users discover events, register with QR-based tickets, and manage bookings with pro membership features. It also provides an organizer dashboard with real-time check-ins, attendee management, and revenue analytics.",
+      image: assets.Spott,
+      techStack: ["NextJS", "AWS", "Node.js", "Convex", "Gemini API", "Clerk", "ShadcnUI", "Tailwind"],
+      liveDemo: "https://ai-event-organiser-seven.vercel.app/",
+      github: "https://github.com/HarshDobariya025/AI-Event-Organiser.git",
+      featured: true,
+    },
+    {
+      id: 3,
+      title: "WebTrack - Website Analytics Platform",
+      description:
+        "Built a website analytics platform that enables traffic tracking via a lightweight script, offering a 7-day free trial and premium plans. It provides an interactive dashboard with visualizations, date-based filters, and detailed insights on sources, locations, devices, browsers, and operating systems.",
+      image: assets.Webtrack,
+      techStack: ["NextJS", "Node.js", "Postgres", "Gemini API", "Clerk", "ShadcnUI", "Tailwind"],
+      liveDemo: "https://web-track-phi.vercel.app/",
+      github: "https://github.com/HarshDobariya025/Web-Track.git",
+      featured: true,
+    },
+    {
+      id: 4,
       title: "AI-Student Assistent",
       description:
       "A platform designed for tech students, integrating an AI-interactive chatbot, 24/7 AI doubt solver, resume builder, and scholarship listings to enhance learning and career opportunities.",
@@ -30,10 +52,10 @@ export default function ProjectsSection() {
       techStack: ["React" ,"Node.js", "Express", "Redux","Gemini API","Tailwind"],
       liveDemo: "https://ai-student-assistant-six.vercel.app/",
       github: "https://github.com/HarshDobariya025/AI-Student-Assistant.git",
-      featured: true,
+      featured: false,
     },
     {
-      id: 3,
+      id: 5,
       title: "E-Commerce Platform",
       description:
         "A full-featured e-commerce platform with product listings, shopping cart, user authentication, and payment processing.",
@@ -41,10 +63,10 @@ export default function ProjectsSection() {
       techStack: ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"],
       liveDemo: "https://cloth-frontend-eta.vercel.app/",
       github: "https://github.com/HarshDobariya025/Cloth-Full-Stack.git",
-      featured: true,
+      featured: false,
     },
     {
-      id: 4,
+      id: 6,
       title: "Gemini Clone",
       description:
         "Gemini Clone is an AI-powered chatbot that allows users to ask anything, just like Gemini AI. It features a sidebar for new chats and recent conversations.",
@@ -55,7 +77,7 @@ export default function ProjectsSection() {
       featured: false,
     },
     {
-      id: 5,
+      id: 7,
       title: "QR-Code Generator",
       description:
       "A versatile QR Code Generator and Scanner that supports creating QR codes for URLs, emails, phone numbers, Wi-Fi, locations, events, and plain text. Includes a built-in QR scanner for seamless decoding.",
@@ -66,7 +88,7 @@ export default function ProjectsSection() {
       featured: false,
     },
     {
-      id: 6,
+      id: 8,
       title: "Weather Dashboard",
       description:
         "Real-time weather information with forecasts, animated visualizations, and location-based data.",
@@ -274,7 +296,7 @@ function ProjectCard({ project, index, variants }: ProjectCardProps) {
         
         <CardContent className="pb-1 sm:pb-2 px-3 sm:px-4 md:px-6 flex-grow">
           <motion.p 
-            className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3"
+            className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 + (index * 0.05) }}
