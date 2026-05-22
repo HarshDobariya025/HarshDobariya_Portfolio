@@ -1,170 +1,214 @@
-import SectionTitle from "@/components/SectionTitle";
-import { Card, CardContent } from "@/components/ui/card";
-import { Briefcase, GraduationCap, MapPin, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  GraduationCap,
+  MapPin,
+  Cloud,
+  Github,
+  Briefcase,
+  Server,
+  Rocket,
+  BookOpen,
+} from "lucide-react";
 
-export default function AboutSection() {
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
+  }),
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
+interface InfoCardProps {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  color: string;
+  delay?: number;
+}
 
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  // Card animation variants
-  const cardVariants = {
-    hidden: { y: 40, opacity: 0 },
-    visible: (custom) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-        delay: custom * 0.1
-      }
-    }),
-    hover: {
-      y: -5,
-      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
-
+function InfoCard({ icon, title, value, color, delay = 0 }: InfoCardProps) {
   return (
-    <section id="about" className="py-10 sm:py-14 md:py-16 lg:py-20 bg-muted/30">
-      <motion.div 
-        className="container px-4 mx-auto flex flex-col items-center text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={containerVariants}
+    <motion.div
+      className="group glass-card rounded-2xl p-4 sm:p-5 flex items-start gap-4 transition-all duration-300 hover:-translate-y-1 cursor-default"
+      custom={delay}
+      variants={fadeUp}
+      style={{ boxShadow: `0 0 0 1px ${color}22` }}
+      whileHover={{ boxShadow: `0 0 0 1.5px ${color}44, 0 8px 32px ${color}22` }}
+    >
+      <div
+        className="mt-0.5 p-2.5 rounded-xl flex-shrink-0"
+        style={{ background: `${color}18`, color }}
       >
-        <motion.div variants={fadeInUp}>
-          <SectionTitle
-            title="About Me"
-            subtitle="Get to know more about me"
-          />
-        </motion.div>
-
-        {/* Responsive Paragraph Section */}
-        <motion.div 
-          className="max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-5xl prose prose-sm sm:prose-base md:prose-lg dark:prose-invert mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-4 md:px-6"
-          variants={itemVariants}
-        >
-          <motion.p 
-            className="text-base sm:text-lg"
-            variants={itemVariants}
-          >
-            I am a full-stack developer pursuing Information Technology at Charotar University of Science 
-            and Technology. With a strong foundation in Data Structures and Algorithms (DSA), 
-            I specialize in building scalable, efficient, and user-friendly web applications.
-          </motion.p>
-          <motion.p 
-            className="text-base sm:text-lg mt-3 sm:mt-4"
-            variants={itemVariants}
-          >
-            I am passionate about problem-solving, optimizing performance, and writing clean, maintainable 
-            code. Beyond coding, I enjoy exploring new technologies and contributing to open-source projects. I strive to build innovative solutions that make an impact in the 
-            tech world.
-          </motion.p>
-        </motion.div>
-
-        {/* Responsive Cards Section */}
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-6xl"
-          variants={containerVariants}
-        >
-          <MotionInfoCard
-            custom={2}
-            icon={<Trophy className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Achievements"
-            description="4+ Projects, 1x AWS Certified"
-            cardVariants={cardVariants}
-          />
-          <MotionInfoCard
-            custom={0}
-            icon={<GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Education"
-            description="B.Tech in Information Technology"
-            cardVariants={cardVariants}
-          />
-          <MotionInfoCard
-            custom={1}
-            icon={<MapPin className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />}
-            title="Home"
-            description="Surat, Gujarat"
-            cardVariants={cardVariants}
-          />
-        </motion.div>
-      </motion.div>
-    </section>
+        {icon}
+      </div>
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-0.5">
+          {title}
+        </p>
+        <p className="text-sm font-semibold text-foreground leading-snug">{value}</p>
+      </div>
+    </motion.div>
   );
 }
 
-function MotionInfoCard({ icon, title, description, custom, cardVariants }) {
+const CARDS = [
+  {
+    icon: <GraduationCap className="w-5 h-5" />,
+    title: "Education",
+    value: "B.Tech Information Technology · CHARUSAT",
+    color: "#3B82F6",
+  },
+  {
+    icon: <MapPin className="w-5 h-5" />,
+    title: "Location",
+    value: "Surat, Gujarat, India",
+    color: "#8B5CF6",
+  },
+  {
+    icon: <Cloud className="w-5 h-5" />,
+    title: "Certifications",
+    value: "2× AWS Certified (CLF-C02 & SAA-C03)",
+    color: "#F59E0B",
+  },
+  {
+    icon: <Rocket className="w-5 h-5" />,
+    title: "Production Experience",
+    value: "Cloud-native scalable deployments",
+    color: "#10B981",
+  },
+  {
+    icon: <Briefcase className="w-5 h-5" />,
+    title: "Availability",
+    value: "Open to full-time & freelance roles",
+    color: "#06B6D4",
+  },
+  {
+    icon: <Server className="w-5 h-5" />,
+    title: "Engineering Focus",
+    value: "Cloud Architecture · Full-Stack Systems",
+    color: "#6366F1",
+  },
+  {
+    icon: <Github className="w-5 h-5" />,
+    title: "Open Source",
+    value: "github.com/HarshDobariya025",
+    color: "#EC4899",
+  },
+  {
+    icon: <BookOpen className="w-5 h-5" />,
+    title: "Backend Stack",
+    value: "Node.js · Express · PostgreSQL · AWS RDS",
+    color: "#14B8A6",
+  },
+];
+
+export default function AboutSection() {
   return (
-    <motion.div
-      variants={cardVariants}
-      custom={custom}
-      whileHover="hover"
-      whileTap={{ scale: 0.98 }}
-    >
-      <Card className="border border-gray-300 dark:border-gray-700 rounded-xl transition-shadow duration-300">
-        <CardContent className="flex flex-col items-center text-center gap-1 sm:gap-2 p-3 sm:p-4 md:p-5 lg:p-6">
-          <motion.div 
-            className="text-primary text-xl sm:text-2xl md:text-3xl"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.2 + custom * 0.1 }}
+    <section id="about" className="py-20 sm:py-24 relative overflow-hidden">
+      {/* Subtle bg tint */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/[0.03] via-transparent to-purple-500/[0.03]" />
+
+      <div className="container px-4 mx-auto">
+        {/* Heading */}
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+        >
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-500 mb-3">
+            Get to know me
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-black mb-4">
+            About <span className="gradient-text">Me</span>
+          </h2>
+          <div className="w-16 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left — Bio */}
+          <motion.div
+            className="space-y-5"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
           >
-            {icon}
+            <motion.p
+              className="text-base sm:text-lg text-muted-foreground leading-relaxed"
+              variants={fadeUp}
+            >
+              I'm an{" "}
+              <span className="font-semibold text-foreground">AWS Certified Full-Stack Developer</span>{" "}
+              pursuing{" "}
+              <span className="font-semibold text-blue-500">
+                B.Tech in Information Technology
+              </span>{" "}
+              at CHARUSAT, with strong expertise in scalable backend systems,{" "}
+              <span className="font-semibold text-foreground">cloud-native architectures</span>, APIs, and modern web technologies.
+            </motion.p>
+
+            <motion.p
+              className="text-base sm:text-lg text-muted-foreground leading-relaxed"
+              variants={fadeUp}
+            >
+              I specialize in building production-grade applications using{" "}
+              <span className="font-semibold text-foreground">React, Next.js, Node.js, PostgreSQL</span>, and AWS services including{" "}
+              <span className="font-semibold text-cyan-500">EC2, S3, Lambda, Route 53, CloudFront, and RDS</span>.
+              I focus on performance, scalability, security, and clean software architecture.
+            </motion.p>
+
+            <motion.p
+              className="text-base sm:text-lg text-muted-foreground leading-relaxed"
+              variants={fadeUp}
+            >
+              Beyond development, I actively solve complex DSA problems, explore{" "}
+              <span className="font-semibold text-purple-500">system design concepts</span>, and
+              build cloud-powered platforms that solve real-world problems with efficient and
+              scalable engineering solutions.
+            </motion.p>
+
+            {/* Journey milestones */}
+            <motion.div
+              className="mt-8 space-y-3"
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } } }}
+            >
+              {[
+                { year: "2022", event: "Started B.Tech IT at CHARUSAT" },
+                { year: "2023", event: "Built first full-stack cloud-integrated application" },
+                { year: "2024", event: "Earned AWS CLF-C02 & SAA-C03 certifications" },
+                { year: "2025", event: "Full-Stack Developer Intern at Appify Infotech" },
+              ].map((item) => (
+                <motion.div
+                  key={item.year}
+                  className="flex items-start gap-3"
+                  variants={fadeUp}
+                >
+                  <span className="mt-0.5 text-xs font-bold text-blue-500 bg-blue-500/10 px-2 py-0.5 rounded-md flex-shrink-0">
+                    {item.year}
+                  </span>
+                  <span className="text-sm text-muted-foreground">{item.event}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
-          <motion.h3 
-            className="font-semibold text-base sm:text-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.3 + custom * 0.1 }}
+
+          {/* Right — Info cards grid */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 gap-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
           >
-            {title}
-          </motion.h3>
-          <motion.p 
-            className="text-muted-foreground text-xs sm:text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.4 + custom * 0.1 }}
-          >
-            {description}
-          </motion.p>
-        </CardContent>
-      </Card>
-    </motion.div>
+            {CARDS.map((card, i) => (
+              <InfoCard key={card.title} {...card} delay={i} />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
