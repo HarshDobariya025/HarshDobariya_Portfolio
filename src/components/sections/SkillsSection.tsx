@@ -81,14 +81,29 @@ const CATEGORIES: Category[] = [
     glow: "rgba(139,92,246,0.12)",
   },
   {
-    title: "Tools & Practices",
-    subtitle: "DevOps & Workflow",
-    icon: "🔧",
+    title: "DevOps & CI/CD",
+    subtitle: "Infrastructure & Automation",
+    icon: "⚙️",
     skills: [
       { name: "Docker" },
+      { name: "Kubernetes" },
+      { name: "Jenkins" },
+      { name: "Terraform" },
       { name: "Git & GitHub" },
-      { name: "Postman" },
       { name: "Linux" },
+    ],
+    bg: "from-orange-500/8 to-red-500/5",
+    border: "border-orange-500/20",
+    pill: "bg-orange-500/10 text-orange-600 dark:text-orange-400 hover:bg-orange-500/20 border border-orange-500/20",
+    glow: "rgba(249,115,22,0.12)",
+  },
+  {
+    title: "Tools & Workflow",
+    subtitle: "Dev Productivity",
+    icon: "🔧",
+    skills: [
+      { name: "Postman" },
+      { name: "Swagger" },
     ],
     bg: "from-pink-500/8 to-rose-500/5",
     border: "border-pink-500/20",
@@ -130,7 +145,7 @@ export default function SkillsSection() {
           <div className="w-16 h-1 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
         </motion.div>
 
-        {/* Grid: 2 cols on sm, 3 cols on lg for 5 cards */}
+        {/* Grid: 2 cols on sm, 3 cols on lg for 6 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {CATEGORIES.map((cat, catIdx) => (
             <motion.div

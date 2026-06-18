@@ -6,6 +6,7 @@ import { assets } from "../../assets/assets";
 const ROLES = [
   "Backend Systems",
   "Cloud-Native Applications",
+  "DevOps Pipelines",
   "Scalable Architectures",
   "Production-Grade Platforms",
 ];
@@ -185,7 +186,7 @@ export default function HomeSection() {
               className="text-base sm:text-lg font-semibold text-muted-foreground mb-2"
               variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
             >
-              Full-Stack Developer &amp;  Cloud Engineer
+              Full-Stack Developer | DevOps &amp; Cloud Enthusiast
             </motion.p>
 
             {/* Typing role */}
@@ -203,7 +204,7 @@ export default function HomeSection() {
               className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed"
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             >
-              Full-Stack & Cloud Engineer focused on building scalable, high-performance applications with modern frontend technologies, robust backend systems, and cloud-native architectures on AWS.
+              Full-Stack & Cloud Engineer focused on building scalable, high-performance applications with modern frontend technologies, robust backend systems, cloud-native architectures on AWS, and DevOps pipelines using Docker, Kubernetes, Jenkins & Terraform.
             </motion.p>
 
             {/* CTA buttons */}
@@ -216,22 +217,12 @@ export default function HomeSection() {
                 href="https://www.linkedin.com/in/harsh-dobariya-0b72062ba"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-white text-sm overflow-hidden"
-                style={{ background: "linear-gradient(135deg, #3B82F6, #8B5CF6)" }}
-                whileHover={{ scale: 1.06, boxShadow: "0 0 28px rgba(59,130,246,0.55), 0 0 48px rgba(139,92,246,0.3)" }}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold text-sm border border-border hover:border-blue-500/60 bg-muted/50 hover:bg-blue-500/10 transition-all duration-200 group"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 16px rgba(59,130,246,0.2)" }}
                 whileTap={{ scale: 0.96 }}
               >
-                {/* Shimmer sweep */}
-                <span
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)",
-                    backgroundSize: "200% 100%",
-                    animation: "shimmer 2.5s ease infinite",
-                  }}
-                />
-                <Linkedin className="w-4 h-4 relative z-10" />
-                <span className="relative z-10">LinkedIn</span>
+                <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                LinkedIn
               </motion.a>
 
               {/* GitHub */}
@@ -335,7 +326,7 @@ export default function HomeSection() {
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 >
                   <Cloud className="w-3 h-3" />
-                  Cloud Engineer
+                  DevOps &amp; Cloud Engineer
                 </motion.div>
               </div>
             </motion.div>

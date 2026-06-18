@@ -66,10 +66,28 @@ const CARDS = [
     color: "#8B5CF6",
   },
   {
+    icon: <Server className="w-5 h-5" />,
+    title: "Engineering Focus",
+    value: "Cloud Architecture · Full-Stack · DevOps",
+    color: "#6366F1",
+  },
+  {
+    icon: <BookOpen className="w-5 h-5" />,
+    title: "Full Stack Skills",
+    value: "React · Next.js · Node.js · Express · SQL & NoSQL",
+    color: "#14B8A6",
+  },
+  {
     icon: <Cloud className="w-5 h-5" />,
     title: "Certifications",
     value: "2× AWS Certified (CLF-C02 & SAA-C03)",
     color: "#F59E0B",
+  },
+  {
+    icon: <Rocket className="w-5 h-5" />,
+    title: "DevOps Skills",
+    value: "Docker · Kubernetes · Jenkins · Terraform",
+    color: "#F97316",
   },
   {
     icon: <Rocket className="w-5 h-5" />,
@@ -82,24 +100,6 @@ const CARDS = [
     title: "Availability",
     value: "Open to full-time & freelance roles",
     color: "#06B6D4",
-  },
-  {
-    icon: <Server className="w-5 h-5" />,
-    title: "Engineering Focus",
-    value: "Cloud Architecture · Full-Stack Systems",
-    color: "#6366F1",
-  },
-  {
-    icon: <Github className="w-5 h-5" />,
-    title: "Open Source",
-    value: "github.com/HarshDobariya025",
-    color: "#EC4899",
-  },
-  {
-    icon: <BookOpen className="w-5 h-5" />,
-    title: "Backend Stack",
-    value: "Node.js · Express · PostgreSQL · AWS RDS",
-    color: "#14B8A6",
   },
 ];
 
@@ -157,7 +157,7 @@ export default function AboutSection() {
               I specialize in building production-grade applications using{" "}
               <span className="font-semibold text-foreground">React, Next.js, Node.js, PostgreSQL</span>, and AWS services including{" "}
               <span className="font-semibold text-cyan-500">EC2, S3, Lambda, Route 53, CloudFront, and RDS</span>.
-              I focus on performance, scalability, security, and clean software architecture.
+              I also implement end-to-end <span className="font-semibold text-orange-400">DevOps pipelines</span> with Docker, Kubernetes, Jenkins CI/CD, and Terraform for infrastructure automation.
             </motion.p>
 
             <motion.p
@@ -176,10 +176,10 @@ export default function AboutSection() {
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } } }}
             >
               {[
-                { year: "2022", event: "Started B.Tech IT at CHARUSAT" },
-                { year: "2023", event: "Built first full-stack cloud-integrated application" },
-                { year: "2024", event: "Earned AWS CLF-C02 & SAA-C03 certifications" },
-                { year: "2025", event: "Full-Stack Developer Intern at Appify Infotech" },
+                { year: "2023", event: "Started B.Tech IT at CHARUSAT" },
+                { year: "2024", event: "Built full-stack applications" },
+                { year: "2025", event: "Started Cloud journey · Full-Stack Developer Intern at Appify Infotech" },
+                { year: "2026", event: "Earned AWS CLF-C02 & SAA-C03 certifications · Full-Stack Developer Intern at Square Infosoft" },
               ].map((item) => (
                 <motion.div
                   key={item.year}

@@ -25,6 +25,22 @@ interface ExperienceItem {
 const EXPERIENCES: ExperienceItem[] = [
   {
     title: "Full-Stack Developer Intern",
+    company: "Square Infosoft",
+    location: "Remote",
+    duration: "May 2026 — June 2026",
+    type: "Internship",
+    description: [
+      "Developing and maintaining full-stack web applications using modern frameworks and technologies",
+      "Collaborating on cloud-based deployments and DevOps workflows with Docker and CI/CD pipelines",
+      "Building scalable REST APIs and integrating third-party services for production use cases",
+      "Contributing to codebase improvements, code reviews, and agile development sprints",
+    ],
+    tags: ["Next.js", "Node.js", "Prisma", "PostgresSQL", "REST API"],
+    accentColor: "#8B5CF6",
+    glowColor: "rgba(139,92,246,0.15)",
+  },
+  {
+    title: "Full-Stack Developer Intern",
     company: "Appify Infotech",
     location: "Remote",
     duration: "May 2025 — June 2025",

@@ -21,7 +21,7 @@ export default function Footer() {
               <span className="gradient-text">Harsh</span>
               <span className="text-slate-400"> Dobariya</span>
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">Full-Stack · Cloud · AWS Certified</p>
+            <p className="text-xs text-slate-500 mt-0.5">Full-Stack · DevOps & Cloud</p>
           </motion.div>
 
           {/* Center copyright */}

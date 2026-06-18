@@ -222,7 +222,7 @@ export default function CertificationsSection() {
           </span>
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Issued 2025
+            Issued 2026
           </span>
         </motion.div>
       </div>
